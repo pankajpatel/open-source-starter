@@ -24,3 +24,10 @@ jobs:
         
     #- name: PR label by Files
     #  uses: Decathlon/pull-request-labeler-action@v2.0.0
+    - name: Labeler
+      uses: actions/labeler@v3-preview
+      with:
+        # The GITHUB_TOKEN secret
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        # The path for the label configurations
+        # configuration-path: # optional, default is .github/labeler.yml
