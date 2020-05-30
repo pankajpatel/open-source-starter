@@ -17,17 +17,25 @@ jobs:
     - uses: actions/labeler@v2
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
-    - name: Pull Request size
+    - name: SizePR
       uses: CodelyTV/pr-size-labeler@v1
       with:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         
-    #- name: PR label by Files
-    #  uses: Decathlon/pull-request-labeler-action@v2.0.0
-    - name: Labeler
-      uses: actions/labeler@v3-preview
+    - name: AssignPR
+      uses: thomaseizinger/assign-pr-creator-action@v1.0.0
       with:
         # The GITHUB_TOKEN secret
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        
+    ####### For TS Projects Only
+    #- name: PR label by Files
+    #  uses: Decathlon/pull-request-labeler-action@v2.0.0
+
+    ####### Label PR based on configuration; must have config file at .github/labeler.yml
+    #- name: Labeler
+    #  uses: actions/labeler@v3-preview
+    #  with:
+    #    repo-token: "${{ secrets.GITHUB_TOKEN }}"
         # The path for the label configurations
         # configuration-path: # optional, default is .github/labeler.yml
